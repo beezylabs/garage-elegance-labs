@@ -99,34 +99,6 @@ function Home() {
       <section className="container-x pt-32 md:pt-48 pb-20 md:pb-28">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-end">
           <div className="lg:col-span-6 scroll-reveal">
-            <div className="eyebrow">00 — Werkstatt</div>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground mt-10 mb-6">
-              Adelsbergstraße 32 · 09126 Chemnitz
-            </p>
-            <div className="relative aspect-[4/3] image-zoom overflow-hidden">
-              <img
-                src={storefront}
-                alt="Central Garage Chemnitz Außenansicht bei Nacht"
-                loading="lazy"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent pointer-events-none" />
-              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-ivory/80 drop-shadow-lg">
-                    Standort
-                  </div>
-                  <div className="font-display text-2xl md:text-3xl text-ivory mt-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
-                    Adelsbergstraße 32
-                  </div>
-                </div>
-                <span className="hidden md:inline text-[10px] font-mono uppercase tracking-[0.3em] text-ivory/70">
-                  Chemnitz
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="lg:col-span-6 scroll-reveal scroll-reveal-delay-1">
             <h2 className="display-lg max-w-[18ch]">
               Eine Werkstatt, die das Wort <em className="not-italic text-accent">Meister</em> wieder ernst nimmt.
             </h2>
@@ -136,10 +108,44 @@ function Home() {
               behandelt wie das eigene.
             </p>
           </div>
+          <div className="lg:col-span-6 scroll-reveal scroll-reveal-delay-1">
+            <div className="eyebrow">00 — Werkstatt</div>
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground mt-6 mb-6">
+              Adelsbergstraße 32 · 09126 Chemnitz
+            </p>
+          </div>
         </div>
       </section>
 
-      <Marquee items={["Inspektion", "Reparatur", "Diagnose", "Reifen", "Autoglas", "Unfall"]} />
+      {/* Flush image + marquee block */}
+      <div className="relative">
+        <div className="relative aspect-[16/9] md:aspect-[21/9] image-zoom overflow-hidden">
+          <img
+            src={storefront}
+            alt="Central Garage Chemnitz Außenansicht bei Nacht"
+            loading="lazy"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute bottom-8 md:bottom-12 left-6 md:left-16 right-6 md:right-16 flex items-end justify-between gap-4">
+            <div>
+              <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-ivory/90 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                Standort
+              </div>
+              <div className="font-display font-semibold text-3xl md:text-5xl lg:text-6xl text-ivory mt-3 leading-[0.95] drop-shadow-[0_4px_18px_rgba(0,0,0,0.85)]">
+                Adelsbergstraße 32
+              </div>
+              <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-ivory/80 mt-3 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                09126 Chemnitz
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="-mt-px">
+          <Marquee items={["Inspektion", "Reparatur", "Diagnose", "Reifen", "Autoglas", "Unfall"]} />
+        </div>
+      </div>
 
       {/* 2 — VIER GRÜNDE */}
       <section id="gruende" className="ink-section bg-background text-foreground relative overflow-hidden">
