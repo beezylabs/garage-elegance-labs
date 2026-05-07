@@ -157,7 +157,7 @@ function Home() {
               Werkstatt · Adelsbergstraße 32
             </div>
           </div>
-          <div className="px-8 md:px-16 lg:px-24 pb-24 lg:pb-32 pt-0 flex flex-col justify-center">
+          <div className="px-8 md:px-16 lg:px-24 pb-24 lg:pb-32 pt-24 md:pt-32 lg:pt-40 flex flex-col justify-center">
             <div className="eyebrow scroll-reveal">01 — Versprechen</div>
             <h2 className="display-lg mt-6 scroll-reveal scroll-reveal-delay-1">Vier Gründe,<br />uns zu vertrauen.</h2>
             <ul className="mt-16 space-y-10">
