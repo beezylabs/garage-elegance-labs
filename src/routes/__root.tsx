@@ -109,9 +109,12 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useScrollReveal();
+  useParallax();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <PageTransition />
       <Outlet />
     </QueryClientProvider>
   );
