@@ -349,11 +349,11 @@ function Home() {
           <h2 className="display-lg mt-6">Aus der Werkstatt.</h2>
         </div>
         <div className="grid grid-cols-12 gap-4 md:gap-6">
-          <div className="col-span-12 md:col-span-8 aspect-[16/10] image-zoom scroll-reveal scroll-reveal-img"><img src={workshop} alt="Werkstatt" loading="lazy" className="w-full h-full object-cover" /></div>
-          <div className="col-span-6 md:col-span-4 aspect-[4/5] image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={wheel} alt="Reifenservice" loading="lazy" className="w-full h-full object-cover" /></div>
-          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img"><img src={engine} alt="Motor" loading="lazy" className="w-full h-full object-cover" /></div>
-          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={diagnostic} alt="Diagnose" loading="lazy" className="w-full h-full object-cover" /></div>
-          <div className="col-span-12 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-2"><img src={hands} alt="Reparatur" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-12 md:col-span-8 aspect-[16/10] image-zoom scroll-reveal scroll-reveal-img"><img src={workshopBay} alt="Werkstattbereich mit Hebebühne" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-[4/5] image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={restoration} alt="Karosserie-Restauration" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img"><img src={engineSwap} alt="Motorwechsel an Mercedes" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={classicLift} alt="Oldtimer auf Hebebühne" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-12 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-2"><img src={hands} alt="Reparatur Detail" loading="lazy" className="w-full h-full object-cover" /></div>
         </div>
       </section>
 
