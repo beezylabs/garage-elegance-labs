@@ -181,11 +181,11 @@ function Home() {
           <Link to="/galerie" className="link-arrow hidden md:inline-flex">Alle ansehen <span className="arrow">→</span></Link>
         </div>
         <div className="grid grid-cols-12 gap-4 md:gap-6">
-          <img src={workshop} alt="Werkstatt" loading="lazy" className="col-span-12 md:col-span-8 aspect-[16/10] object-cover" />
-          <img src={wheel} alt="Reifenservice" loading="lazy" className="col-span-6 md:col-span-4 aspect-[4/5] object-cover" />
-          <img src={engine} alt="Motor" loading="lazy" className="col-span-6 md:col-span-4 aspect-square object-cover" />
-          <img src={diagnostic} alt="Diagnose" loading="lazy" className="col-span-6 md:col-span-4 aspect-square object-cover" />
-          <img src={hands} alt="Reparatur" loading="lazy" className="col-span-12 md:col-span-4 aspect-square object-cover" />
+          <div className="col-span-12 md:col-span-8 aspect-[16/10] image-zoom scroll-reveal scroll-reveal-img"><img src={workshop} alt="Werkstatt" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-[4/5] image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={wheel} alt="Reifenservice" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img"><img src={engine} alt="Motor" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={diagnostic} alt="Diagnose" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-12 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-2"><img src={hands} alt="Reparatur" loading="lazy" className="w-full h-full object-cover" /></div>
         </div>
       </section>
 
