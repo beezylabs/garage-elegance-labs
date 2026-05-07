@@ -1,4 +1,8 @@
+import { useState } from "react";
+import { LegalModal } from "./LegalModal";
+
 export function Footer() {
+  const [legal, setLegal] = useState<null | "impressum" | "datenschutz">(null);
   return (
     <footer className="ink-section bg-background text-foreground border-t border-border">
       <div className="container-x py-20">
@@ -54,11 +58,13 @@ export function Footer() {
         <div className="mt-8 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs font-mono uppercase tracking-[0.22em] text-muted-foreground">
           <div>© {new Date().getFullYear()} Central Garage Chemnitz</div>
           <div className="flex gap-6">
-            <a href="#">Impressum</a>
-            <a href="#">Datenschutz</a>
+            <button onClick={() => setLegal("impressum")} className="hover:text-accent transition-colors">Impressum</button>
+            <button onClick={() => setLegal("datenschutz")} className="hover:text-accent transition-colors">Datenschutz</button>
           </div>
         </div>
       </div>
+
+      <LegalModal open={legal !== null} onOpenChange={(v) => !v && setLegal(null)} kind={legal ?? "impressum"} />
     </footer>
   );
 }

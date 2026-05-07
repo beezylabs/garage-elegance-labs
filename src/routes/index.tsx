@@ -10,6 +10,12 @@ import wheel from "@/assets/wheel.jpg";
 import diagnostic from "@/assets/diagnostic.jpg";
 import engine from "@/assets/engine.jpg";
 import mechanic from "@/assets/mechanic.jpg";
+import storefront from "@/assets/storefront.jpg";
+import restoration from "@/assets/restoration.jpg";
+import classicLift from "@/assets/classic-lift.jpg";
+import workshopBay from "@/assets/workshop-bay.jpg";
+import engineSwap from "@/assets/engine-swap.jpg";
+import { ContactForm } from "@/components/site/ContactForm";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -89,16 +95,38 @@ function Home() {
         </div>
       </section>
 
-      {/* INTRO BRIDGE */}
-      <section className="container-x py-32 md:py-48">
-        <div className="grid lg:grid-cols-12 gap-16 items-end">
-          <div className="lg:col-span-5 scroll-reveal">
+      {/* INTRO BRIDGE — Werkstatt 00 */}
+      <section className="container-x pt-32 md:pt-48 pb-20 md:pb-28">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-end">
+          <div className="lg:col-span-6 scroll-reveal">
             <div className="eyebrow">00 — Werkstatt</div>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground mt-12">
-              Adelsbergstraße 32<br />09126 Chemnitz
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground mt-10 mb-6">
+              Adelsbergstraße 32 · 09126 Chemnitz
             </p>
+            <div className="relative aspect-[4/3] image-zoom overflow-hidden">
+              <img
+                src={storefront}
+                alt="Central Garage Chemnitz Außenansicht bei Nacht"
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent pointer-events-none" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
+                <div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-ivory/80 drop-shadow-lg">
+                    Standort
+                  </div>
+                  <div className="font-display text-2xl md:text-3xl text-ivory mt-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
+                    Adelsbergstraße 32
+                  </div>
+                </div>
+                <span className="hidden md:inline text-[10px] font-mono uppercase tracking-[0.3em] text-ivory/70">
+                  Chemnitz
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="lg:col-span-7 scroll-reveal scroll-reveal-delay-1">
+          <div className="lg:col-span-6 scroll-reveal scroll-reveal-delay-1">
             <h2 className="display-lg max-w-[18ch]">
               Eine Werkstatt, die das Wort <em className="not-italic text-accent">Meister</em> wieder ernst nimmt.
             </h2>
@@ -125,7 +153,7 @@ function Home() {
               Werkstatt · Adelsbergstraße 32
             </div>
           </div>
-          <div className="px-8 md:px-16 lg:px-24 py-24 lg:py-32 flex flex-col justify-center">
+          <div className="px-8 md:px-16 lg:px-24 pb-24 lg:pb-32 pt-0 flex flex-col justify-center">
             <div className="eyebrow scroll-reveal">01 — Versprechen</div>
             <h2 className="display-lg mt-6 scroll-reveal scroll-reveal-delay-1">Vier Gründe,<br />uns zu vertrauen.</h2>
             <ul className="mt-16 space-y-10">
@@ -145,8 +173,6 @@ function Home() {
           </div>
         </div>
       </section>
-
-      {/* 3 — LEISTUNGEN */}
       <section id="leistungen" className="container-x py-32 md:py-48">
         <div className="flex items-end justify-between gap-8 mb-20 scroll-reveal">
           <div>
@@ -187,21 +213,27 @@ function Home() {
         </div>
       </section>
 
-      {/* 4 — ERSATZWAGEN HIGHLIGHT */}
-      <section id="ersatzwagen" className="ink-section bg-background text-foreground relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" data-parallax="0.08">
-            <img src={wheel} alt="" className="w-full h-full object-cover scale-110" />
+      {/* 4 — ERSATZWAGEN HIGHLIGHT — full hero image */}
+      <section id="ersatzwagen" className="ink-section relative overflow-hidden min-h-[90vh] flex items-center text-ivory">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 w-full h-full" data-parallax="0.1">
+            <img
+              src={wheel}
+              alt="Werkstattersatzwagen — Mobilität inklusive"
+              className="w-full h-full object-cover scale-110"
+            />
           </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-background/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/70" />
         </div>
-        <div className="relative container-x py-32 md:py-48">
+        <div className="relative container-x py-32 md:py-48 w-full">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-7 scroll-reveal">
               <div className="eyebrow">03 — Mobil bleiben</div>
               <h2 className="display-xl mt-8">
                 <span className="text-accent">19 €</span><br />pro Tag.<br />Mobilität inklusive.
               </h2>
-              <p className="mt-10 max-w-xl text-lg text-muted-foreground leading-relaxed">
+              <p className="mt-10 max-w-xl text-lg text-ivory/80 leading-relaxed">
                 Unser Werkstattersatzwagen kostet 19 € am Tag — damit Sie nicht stehen bleiben,
                 während wir Ihr Fahrzeug zurück in Bestform bringen. Reservierung empfohlen.
               </p>
@@ -210,17 +242,17 @@ function Home() {
                 <a href="#kontakt" className="btn-ghost">Reservieren</a>
               </div>
             </div>
-            <div className="lg:col-span-5 grid grid-cols-2 gap-px bg-border scroll-reveal scroll-reveal-delay-2">
+            <div className="lg:col-span-5 grid grid-cols-2 gap-px bg-border/40 backdrop-blur-md scroll-reveal scroll-reveal-delay-2">
               {[
                 [Car, "Verfügbar", "Auf Anfrage"],
                 [Clock, "Übergabe", "Vormittags"],
                 [MapPin, "Abholung", "Adelsbergstr. 32"],
                 [Phone, "Buchung", "Telefonisch"],
               ].map(([Icon, k, v]: any, i) => (
-                <div key={i} className="bg-background p-8">
+                <div key={i} className="bg-background/70 backdrop-blur-md p-8">
                   <Icon size={18} className="text-accent" />
-                  <div className="mt-6 font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">{k}</div>
-                  <div className="mt-2 font-display text-lg">{v}</div>
+                  <div className="mt-6 font-mono text-[10px] uppercase tracking-[0.22em] text-ivory/70">{k}</div>
+                  <div className="mt-2 font-display text-lg text-ivory">{v}</div>
                 </div>
               ))}
             </div>
@@ -317,11 +349,11 @@ function Home() {
           <h2 className="display-lg mt-6">Aus der Werkstatt.</h2>
         </div>
         <div className="grid grid-cols-12 gap-4 md:gap-6">
-          <div className="col-span-12 md:col-span-8 aspect-[16/10] image-zoom scroll-reveal scroll-reveal-img"><img src={workshop} alt="Werkstatt" loading="lazy" className="w-full h-full object-cover" /></div>
-          <div className="col-span-6 md:col-span-4 aspect-[4/5] image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={wheel} alt="Reifenservice" loading="lazy" className="w-full h-full object-cover" /></div>
-          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img"><img src={engine} alt="Motor" loading="lazy" className="w-full h-full object-cover" /></div>
-          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={diagnostic} alt="Diagnose" loading="lazy" className="w-full h-full object-cover" /></div>
-          <div className="col-span-12 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-2"><img src={hands} alt="Reparatur" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-12 md:col-span-8 aspect-[16/10] image-zoom scroll-reveal scroll-reveal-img"><img src={workshopBay} alt="Werkstattbereich mit Hebebühne" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-[4/5] image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={restoration} alt="Karosserie-Restauration" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img"><img src={engineSwap} alt="Motorwechsel an Mercedes" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={classicLift} alt="Oldtimer auf Hebebühne" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-12 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-2"><img src={hands} alt="Reparatur Detail" loading="lazy" className="w-full h-full object-cover" /></div>
         </div>
       </section>
 
@@ -362,14 +394,21 @@ function Home() {
             ))}
           </div>
 
-          <div className="mt-16 aspect-[16/9] md:aspect-[21/9] w-full scroll-reveal scroll-reveal-img">
-            <iframe
-              title="Anfahrt Central Garage Chemnitz"
-              src="https://www.google.com/maps?q=Adelsbergstra%C3%9Fe+32,+09126+Chemnitz&output=embed"
-              className="w-full h-full grayscale contrast-110"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          <div className="mt-20 grid lg:grid-cols-2 gap-px bg-border border border-border scroll-reveal">
+            <div className="bg-background p-2">
+              <div className="aspect-[4/3] lg:aspect-auto lg:h-full w-full overflow-hidden">
+                <iframe
+                  title="Anfahrt Central Garage Chemnitz"
+                  src="https://www.google.com/maps?q=Adelsbergstra%C3%9Fe+32,+09126+Chemnitz&output=embed"
+                  className="w-full h-full min-h-[420px] grayscale contrast-110"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </div>
+            <div className="bg-background p-2">
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>
