@@ -90,13 +90,13 @@ function Home() {
       {/* INTRO */}
       <section className="container-x py-32 md:py-48">
         <div className="grid lg:grid-cols-12 gap-16 items-end">
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 scroll-reveal">
             <div className="eyebrow">01 — Werkstatt</div>
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground mt-12">
               Adelsbergstraße 32<br />09126 Chemnitz
             </p>
           </div>
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 scroll-reveal scroll-reveal-delay-1">
             <h2 className="display-lg max-w-[18ch]">
               Eine Werkstatt, die das Wort <em className="not-italic text-accent">Meister</em> wieder ernst nimmt.
             </h2>
