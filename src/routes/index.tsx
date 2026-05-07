@@ -95,16 +95,38 @@ function Home() {
         </div>
       </section>
 
-      {/* INTRO BRIDGE */}
-      <section className="container-x py-32 md:py-48">
-        <div className="grid lg:grid-cols-12 gap-16 items-end">
-          <div className="lg:col-span-5 scroll-reveal">
+      {/* INTRO BRIDGE — Werkstatt 00 */}
+      <section className="container-x pt-32 md:pt-48 pb-20 md:pb-28">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-end">
+          <div className="lg:col-span-6 scroll-reveal">
             <div className="eyebrow">00 — Werkstatt</div>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground mt-12">
-              Adelsbergstraße 32<br />09126 Chemnitz
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground mt-10 mb-6">
+              Adelsbergstraße 32 · 09126 Chemnitz
             </p>
+            <div className="relative aspect-[4/3] image-zoom overflow-hidden">
+              <img
+                src={storefront}
+                alt="Central Garage Chemnitz Außenansicht bei Nacht"
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent pointer-events-none" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
+                <div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-ivory/80 drop-shadow-lg">
+                    Standort
+                  </div>
+                  <div className="font-display text-2xl md:text-3xl text-ivory mt-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
+                    Adelsbergstraße 32
+                  </div>
+                </div>
+                <span className="hidden md:inline text-[10px] font-mono uppercase tracking-[0.3em] text-ivory/70">
+                  Chemnitz
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="lg:col-span-7 scroll-reveal scroll-reveal-delay-1">
+          <div className="lg:col-span-6 scroll-reveal scroll-reveal-delay-1">
             <h2 className="display-lg max-w-[18ch]">
               Eine Werkstatt, die das Wort <em className="not-italic text-accent">Meister</em> wieder ernst nimmt.
             </h2>
@@ -131,7 +153,7 @@ function Home() {
               Werkstatt · Adelsbergstraße 32
             </div>
           </div>
-          <div className="px-8 md:px-16 lg:px-24 py-24 lg:py-32 flex flex-col justify-center">
+          <div className="px-8 md:px-16 lg:px-24 pb-24 lg:pb-32 pt-0 flex flex-col justify-center">
             <div className="eyebrow scroll-reveal">01 — Versprechen</div>
             <h2 className="display-lg mt-6 scroll-reveal scroll-reveal-delay-1">Vier Gründe,<br />uns zu vertrauen.</h2>
             <ul className="mt-16 space-y-10">
@@ -151,8 +173,6 @@ function Home() {
           </div>
         </div>
       </section>
-
-      {/* 3 — LEISTUNGEN */}
       <section id="leistungen" className="container-x py-32 md:py-48">
         <div className="flex items-end justify-between gap-8 mb-20 scroll-reveal">
           <div>
