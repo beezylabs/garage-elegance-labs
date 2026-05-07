@@ -10,6 +10,12 @@ import wheel from "@/assets/wheel.jpg";
 import diagnostic from "@/assets/diagnostic.jpg";
 import engine from "@/assets/engine.jpg";
 import mechanic from "@/assets/mechanic.jpg";
+import storefront from "@/assets/storefront.jpg";
+import restoration from "@/assets/restoration.jpg";
+import classicLift from "@/assets/classic-lift.jpg";
+import workshopBay from "@/assets/workshop-bay.jpg";
+import engineSwap from "@/assets/engine-swap.jpg";
+import { ContactForm } from "@/components/site/ContactForm";
 
 export const Route = createFileRoute("/")({
   head: () => ({
