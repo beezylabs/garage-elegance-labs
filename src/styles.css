@@ -154,11 +154,12 @@
     @apply inline-flex items-center gap-3 border border-current/30 px-7 py-4 text-sm uppercase tracking-[0.18em] font-mono transition-all duration-300 hover:border-current;
   }
   .link-arrow {
-    @apply inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] font-mono group;
+    @apply inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] font-mono;
   }
   .link-arrow .arrow {
-    @apply transition-transform duration-300 group-hover:translate-x-1;
+    @apply transition-transform duration-300;
   }
+  .link-arrow:hover .arrow { transform: translateX(4px); }
 
   .hairline { @apply h-px w-full bg-border; }
   .v-hairline { @apply w-px h-full bg-border; }
