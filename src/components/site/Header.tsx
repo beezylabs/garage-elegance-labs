@@ -1,18 +1,20 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const nav = [
-  { to: "/", label: "Start" },
-  { to: "/leistungen", label: "Leistungen" },
-  { to: "/werkstatt", label: "Werkstatt" },
-  { to: "/galerie", label: "Galerie" },
-  { to: "/kontakt", label: "Kontakt" },
+  { hash: "gruende", label: "Vertrauen" },
+  { hash: "leistungen", label: "Leistungen" },
+  { hash: "ersatzwagen", label: "Ersatzwagen" },
+  { hash: "stimmen", label: "Stimmen" },
+  { hash: "kontakt", label: "Kontakt" },
 ] as const;
 
 export function Header({ variant = "auto" }: { variant?: "auto" | "light" | "dark" }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const onHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -22,6 +24,9 @@ export function Header({ variant = "auto" }: { variant?: "auto" | "light" | "dar
   }, []);
 
   const onDark = variant === "dark";
+
+  const linkTo = (hash: string) => (onHome ? `#${hash}` : `/#${hash}`);
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
@@ -42,14 +47,13 @@ export function Header({ variant = "auto" }: { variant?: "auto" | "light" | "dar
 
         <nav className="hidden lg:flex items-center gap-10">
           {nav.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              className="text-[12px] uppercase tracking-[0.22em] font-mono opacity-80 hover:opacity-100 transition-opacity"
-              activeProps={{ className: "opacity-100 [&]:text-accent" }}
+            <a
+              key={n.hash}
+              href={linkTo(n.hash)}
+              className="text-[12px] uppercase tracking-[0.22em] font-mono opacity-80 hover:opacity-100 hover:text-accent transition-all"
             >
               {n.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
@@ -60,9 +64,9 @@ export function Header({ variant = "auto" }: { variant?: "auto" | "light" | "dar
           >
             0371 7714672
           </a>
-          <Link to="/kontakt" className="btn-primary !py-3 !px-5 text-[11px]">
+          <a href={linkTo("kontakt")} className="btn-primary !py-3 !px-5 text-[11px]">
             Termin
-          </Link>
+          </a>
         </div>
 
         <button
@@ -78,14 +82,14 @@ export function Header({ variant = "auto" }: { variant?: "auto" | "light" | "dar
         <div className="lg:hidden border-t border-border bg-background text-foreground">
           <div className="container-x py-8 flex flex-col gap-6">
             {nav.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
+              <a
+                key={n.hash}
+                href={linkTo(n.hash)}
                 onClick={() => setOpen(false)}
                 className="text-2xl font-display"
               >
                 {n.label}
-              </Link>
+              </a>
             ))}
             <a href="tel:+4937177146 72" className="font-mono text-sm uppercase tracking-[0.22em] mt-4 opacity-70">
               0371 7714672

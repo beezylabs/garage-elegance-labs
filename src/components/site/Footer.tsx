@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+
 
 export function Footer() {
   return (
@@ -13,20 +13,20 @@ export function Footer() {
               Freie Meisterwerkstatt für alle Marken. Persönlich,
               professionell, (c)zentral — mitten in Chemnitz.
             </p>
-            <Link to="/kontakt" className="btn-primary mt-10">
+            <a href="/#kontakt" className="btn-primary mt-10">
               Termin vereinbaren
               <span>→</span>
-            </Link>
+            </a>
           </div>
 
           <div className="lg:col-span-2">
             <div className="eyebrow mb-6">Navigation</div>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/" className="hover:text-accent">Start</Link></li>
-              <li><Link to="/leistungen" className="hover:text-accent">Leistungen</Link></li>
-              <li><Link to="/werkstatt" className="hover:text-accent">Werkstatt</Link></li>
-              <li><Link to="/galerie" className="hover:text-accent">Galerie</Link></li>
-              <li><Link to="/kontakt" className="hover:text-accent">Kontakt</Link></li>
+              <li><a href="/#gruende" className="hover:text-accent">Vertrauen</a></li>
+              <li><a href="/#leistungen" className="hover:text-accent">Leistungen</a></li>
+              <li><a href="/#ersatzwagen" className="hover:text-accent">Ersatzwagen</a></li>
+              <li><a href="/#stimmen" className="hover:text-accent">Stimmen</a></li>
+              <li><a href="/#kontakt" className="hover:text-accent">Kontakt</a></li>
             </ul>
           </div>
 
