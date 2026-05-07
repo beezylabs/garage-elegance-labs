@@ -128,13 +128,13 @@ function Home() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
           {services.map((s, i) => (
-            <article key={s.title} className="bg-background p-10 lg:p-12 group cursor-pointer">
-              <div className="aspect-[4/3] overflow-hidden mb-8">
+            <article key={s.title} className="bg-background p-10 lg:p-12 group cursor-pointer scroll-reveal">
+              <div className="aspect-[4/3] image-zoom mb-8">
                 <img
                   src={s.image}
                   alt={s.title}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="flex items-baseline gap-4">
