@@ -1,9 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Marquee } from "@/components/site/Marquee";
-import { Phone, MapPin, Clock, Car, ShieldCheck, Wrench, Globe2, Star } from "lucide-react";
 import hero from "@/assets/hero.jpg";
 import hands from "@/assets/hands.jpg";
 import workshop from "@/assets/workshop.jpg";
@@ -15,7 +13,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Central Garage Chemnitz — Freie KFZ-Meisterwerkstatt" },
-      { name: "description", content: "Premium KFZ-Service in Chemnitz. Inspektion, Reparatur, Diagnose, Reifen — markenunabhängig, ehrlich, persönlich." },
+      { name: "description", content: "Premium KFZ-Service in Chemnitz. Inspektion, Reparatur, Diagnose, Reifenservice — markenunabhängig und ehrlich." },
       { property: "og:title", content: "Central Garage Chemnitz" },
       { property: "og:description", content: "Freie Meisterwerkstatt in Chemnitz für alle Marken." },
     ],
@@ -24,27 +22,12 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const heroRef = useRef<HTMLDivElement>(null);
-
-  // Smooth scroll for hash links + handle initial hash on load
-  useEffect(() => {
-    const onHash = () => {
-      const id = window.location.hash.slice(1);
-      if (!id) return;
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    };
-    onHash();
-    window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
-  }, []);
-
   return (
     <div className="bg-background text-foreground">
       <Header variant="dark" />
 
       {/* HERO */}
-      <section ref={heroRef} className="ink-section relative min-h-screen bg-background text-foreground overflow-hidden">
+      <section className="ink-section relative min-h-screen bg-background text-foreground overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0" data-parallax="0.18">
             <img
@@ -75,12 +58,12 @@ function Home() {
           </p>
 
           <div className="reveal reveal-delay-3 mt-12 flex flex-wrap items-center gap-4">
-            <a href="#kontakt" className="btn-primary">
+            <Link to="/kontakt" className="btn-primary">
               Termin vereinbaren <span>→</span>
-            </a>
-            <a href="#leistungen" className="btn-ghost">
+            </Link>
+            <Link to="/leistungen" className="btn-ghost">
               Leistungen ansehen
-            </a>
+            </Link>
           </div>
 
           <div className="reveal reveal-delay-4 mt-auto pt-24 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-border/30">
@@ -104,18 +87,43 @@ function Home() {
         </div>
       </section>
 
-      {/* VIER GRÜNDE — premium scroll showcase */}
-      <ReasonsSection />
+      {/* INTRO */}
+      <section className="container-x py-32 md:py-48">
+        <div className="grid lg:grid-cols-12 gap-16 items-end">
+          <div className="lg:col-span-5 scroll-reveal">
+            <div className="eyebrow">01 — Werkstatt</div>
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground mt-12">
+              Adelsbergstraße 32<br />09126 Chemnitz
+            </p>
+          </div>
+          <div className="lg:col-span-7 scroll-reveal scroll-reveal-delay-1">
+            <h2 className="display-lg max-w-[18ch]">
+              Eine Werkstatt, die das Wort <em className="not-italic text-accent">Meister</em> wieder ernst nimmt.
+            </h2>
+            <p className="mt-10 text-lg text-muted-foreground leading-relaxed max-w-2xl">
+              Seit 2025 finden Sie uns am neuen, größeren Standort. Drei Hebebühnen,
+              modernste Diagnose, freie Markenwahl — und ein Team, das Ihr Fahrzeug
+              behandelt wie das eigene.
+            </p>
+            <Link to="/werkstatt" className="link-arrow mt-10 text-foreground">
+              Mehr über uns <span className="arrow">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <Marquee items={["Inspektion", "Reparatur", "Diagnose", "Reifen", "Autoglas", "Unfall"]} />
 
       {/* SERVICES */}
-      <section id="leistungen" className="container-x py-32 md:py-48">
+      <section className="container-x py-32 md:py-48">
         <div className="flex items-end justify-between gap-8 mb-20">
           <div>
-            <div className="eyebrow">03 — Leistungen</div>
+            <div className="eyebrow">02 — Leistungen</div>
             <h2 className="display-lg mt-6 max-w-[16ch]">Was wir am besten können.</h2>
           </div>
+          <Link to="/leistungen" className="link-arrow hidden md:inline-flex">
+            Alle Leistungen <span className="arrow">→</span>
+          </Link>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
@@ -139,278 +147,85 @@ function Home() {
         </div>
       </section>
 
-      {/* WERKSTATTERSATZWAGEN — bold statement */}
-      <section
-        id="ersatzwagen"
-        className="ink-section relative bg-background text-foreground overflow-hidden py-32 md:py-48"
-      >
-        <div className="absolute inset-0 opacity-[0.07]">
-          <div className="absolute inset-0" data-parallax="0.12">
-            <img src={workshop} alt="" className="w-full h-full object-cover" />
+      {/* WHY US — split image / text */}
+      <section className="ink-section bg-background text-foreground">
+        <div className="grid lg:grid-cols-2">
+          <div className="relative min-h-[60vh] lg:min-h-[100vh]">
+            <img src={hands} alt="Meisterhafte Handarbeit" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
           </div>
-        </div>
-
-        <div className="relative container-x">
-          <div className="scroll-reveal eyebrow">04 — Mobil bleiben</div>
-
-          <div className="mt-12 grid lg:grid-cols-12 gap-12 items-end">
-            <div className="lg:col-span-7 scroll-reveal">
-              <h2 className="display-lg max-w-[14ch]">
-                Werkstatt­ersatzwagen — <em className="not-italic text-accent">ab Tag eins</em>.
-              </h2>
-              <p className="mt-8 text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Damit Ihr Alltag nicht stillsteht: Wir stellen Ihnen während
-                der Reparatur einen verlässlichen Ersatzwagen — zum fairen
-                Tagespreis, ohne Kleingedrucktes.
-              </p>
-            </div>
-
-            <div className="lg:col-span-5 scroll-reveal scroll-reveal-delay-1 text-right">
-              <div className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground mb-2">
-                pauschal pro Tag
-              </div>
-              <div className="display-mega text-accent leading-none">19€</div>
-            </div>
-          </div>
-
-          <div className="scroll-reveal scroll-reveal-delay-2 mt-20 grid sm:grid-cols-3 gap-px bg-border border border-border">
-            {[
-              { icon: Car, label: "Sofort verfügbar", desc: "Reservierung bei Terminbuchung" },
-              { icon: ShieldCheck, label: "Voll versichert", desc: "Inkl. Haftpflicht & Vollkasko" },
-              { icon: Wrench, label: "Ohne Versteckkosten", desc: "Pauschal — keine Zusatzgebühren" },
-            ].map((f) => (
-              <div key={f.label} className="bg-background p-10">
-                <f.icon size={22} className="text-accent" />
-                <div className="mt-6 font-display text-xl">{f.label}</div>
-                <div className="mt-2 text-sm text-muted-foreground">{f.desc}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="scroll-reveal scroll-reveal-delay-3 mt-12">
-            <a href="#kontakt" className="btn-primary">
-              Ersatzwagen reservieren <span>→</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT / WERKSTATT — cinematic split */}
-      <section id="werkstatt" className="container-x py-32 md:py-48">
-        <div className="grid lg:grid-cols-12 gap-16 items-end mb-20">
-          <div className="lg:col-span-5 scroll-reveal">
-            <div className="eyebrow">05 — Werkstatt</div>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground mt-12">
-              Adelsbergstraße 32<br />09126 Chemnitz
-            </p>
-          </div>
-          <div className="lg:col-span-7 scroll-reveal scroll-reveal-delay-1">
-            <h2 className="display-lg max-w-[18ch]">
-              Eine Werkstatt, die das Wort <em className="not-italic text-accent">Meister</em> wieder ernst nimmt.
-            </h2>
-            <p className="mt-10 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              Seit 2025 finden Sie uns am neuen, größeren Standort. Drei Hebebühnen,
-              modernste Diagnose, freie Markenwahl — und ein Team, das Ihr Fahrzeug
-              behandelt wie das eigene.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid lg:grid-cols-12 gap-8 items-stretch">
-          <div className="lg:col-span-7 scroll-reveal-img aspect-[16/10] image-zoom">
-            <img src={workshop} alt="Werkstatt-Halle der Central Garage Chemnitz" loading="lazy" className="w-full h-full object-cover" />
-          </div>
-          <div className="lg:col-span-5 grid grid-cols-2 gap-px bg-border border border-border self-stretch">
-            {[
-              ["3", "Hebebühnen"],
-              ["Alle", "Marken"],
-              ["EU", "Garantie bleibt"],
-              ["2025", "Neuer Standort"],
-            ].map(([k, v]) => (
-              <div key={v} className="bg-background p-8 scroll-reveal">
-                <div className="font-display text-4xl">{k}</div>
-                <div className="mt-3 text-[11px] uppercase tracking-[0.22em] font-mono text-muted-foreground">{v}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* GOOGLE REVIEWS */}
-      <section id="stimmen" className="container-x py-32 md:py-48">
-        <div className="scroll-reveal flex items-end justify-between gap-8 mb-16 flex-wrap">
-          <div>
-            <div className="eyebrow flex items-center gap-3">
-              <Globe2 size={14} className="text-accent" /> 05 — Google Bewertungen
-            </div>
-            <h2 className="display-lg mt-6 max-w-[20ch]">Was unsere Kunden sagen.</h2>
-          </div>
-          <div className="text-right">
-            <div className="flex items-center justify-end gap-2 text-accent">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={20} className="fill-current" />
-              ))}
-            </div>
-            <div className="mt-3 font-display text-3xl">4.9 / 5.0</div>
-            <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground mt-1">
-              basierend auf Google
-            </div>
-          </div>
-        </div>
-
-        <div className="reviews-track flex gap-6 overflow-x-auto -mx-6 px-6 pb-6 snap-x">
-          {reviews.map((r) => (
-            <article
-              key={r.name}
-              className="scroll-reveal shrink-0 w-[88%] sm:w-[460px] bg-card border border-border p-10 flex flex-col"
-            >
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-1 text-accent">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={14} className="fill-current" />
-                  ))}
-                </div>
-                <Globe2 size={16} className="text-muted-foreground" />
-              </div>
-              <p className="font-display text-xl leading-snug">"{r.quote}"</p>
-              <div className="mt-auto pt-8 flex items-center gap-4">
-                <div className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center font-mono text-sm">
-                  {r.initials}
-                </div>
-                <div>
-                  <div className="font-mono text-sm">{r.name}</div>
-                  <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                    {r.when}
+          <div className="px-8 md:px-16 lg:px-24 py-24 lg:py-32 flex flex-col justify-center">
+            <div className="eyebrow">03 — Versprechen</div>
+            <h2 className="display-lg mt-6">Vier Gründe,<br />uns zu vertrauen.</h2>
+            <ul className="mt-16 space-y-10">
+              {reasons.map((r, i) => (
+                <li key={r.title} className="grid grid-cols-[auto_1fr] gap-8 pb-10 border-b border-border last:border-0">
+                  <div className="font-mono text-sm text-accent">{String(i + 1).padStart(2, "0")}</div>
+                  <div>
+                    <h3 className="font-display text-2xl">{r.title}</h3>
+                    <p className="mt-3 text-muted-foreground leading-relaxed">{r.desc}</p>
                   </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="scroll-reveal mt-10">
-          <a
-            href="https://www.google.com/maps/place/?q=Central+Garage+Chemnitz"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-arrow text-foreground"
-          >
-            Alle Bewertungen auf Google ansehen <span className="arrow">→</span>
-          </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      {/* CONTACT / CTA */}
-      <section id="kontakt" className="ink-section bg-background text-foreground py-32 md:py-48">
+      {/* GALLERY TEASER */}
+      <section className="container-x py-32 md:py-48">
+        <div className="flex items-end justify-between mb-16">
+          <div>
+            <div className="eyebrow">04 — Galerie</div>
+            <h2 className="display-lg mt-6">Eindrücke.</h2>
+          </div>
+          <Link to="/galerie" className="link-arrow hidden md:inline-flex">Alle ansehen <span className="arrow">→</span></Link>
+        </div>
+        <div className="grid grid-cols-12 gap-4 md:gap-6">
+          <div className="col-span-12 md:col-span-8 aspect-[16/10] image-zoom scroll-reveal scroll-reveal-img"><img src={workshop} alt="Werkstatt" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-[4/5] image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={wheel} alt="Reifenservice" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img"><img src={engine} alt="Motor" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={diagnostic} alt="Diagnose" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-12 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-2"><img src={hands} alt="Reparatur" loading="lazy" className="w-full h-full object-cover" /></div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="ink-section bg-background text-foreground py-32 md:py-48">
         <div className="container-x">
-          <div className="grid lg:grid-cols-12 gap-16">
-            <div className="lg:col-span-6 scroll-reveal">
-              <div className="eyebrow">06 — Termin</div>
-              <h2 className="display-xl mt-8 max-w-[14ch]">
-                Ihr Fahrzeug verdient das <em className="not-italic text-accent">Beste</em>.
-              </h2>
-              <p className="mt-8 max-w-md text-lg text-muted-foreground">
-                Termine vergeben wir telefonisch — am besten vormittags. Wir freuen uns,
-                von Ihnen zu hören.
-              </p>
-              <div className="mt-10 flex flex-wrap items-center gap-4">
-                <a href="tel:+4937177146 72" className="btn-primary">
-                  0371 7714672 <span>→</span>
-                </a>
-              </div>
-            </div>
-
-            <div className="lg:col-span-6 grid sm:grid-cols-2 gap-px bg-border border border-border self-start">
-              {[
-                { icon: Phone, label: "Telefon", value: "0371 7714672", href: "tel:+4937177146 72" },
-                { icon: MapPin, label: "Adresse", value: "Adelsbergstraße 32\n09126 Chemnitz", href: "https://maps.app.goo.gl/Ymvu14sbcNeryovR6" },
-                { icon: Clock, label: "Öffnungszeiten", value: "Mo – Fr · 08 – 18 Uhr" },
-                { icon: Car, label: "Ersatzwagen", value: "19 € pauschal / Tag" },
-              ].map((c) => (
-                <a
-                  key={c.label}
-                  href={c.href}
-                  className="bg-background p-8 hover:bg-secondary transition-colors scroll-reveal"
-                >
-                  <c.icon size={18} className="text-accent" />
-                  <div className="mt-6 eyebrow">{c.label}</div>
-                  <div className="mt-3 font-display text-xl whitespace-pre-line">{c.value}</div>
-                </a>
-              ))}
-            </div>
+          <div className="eyebrow">05 — Stimmen</div>
+          <h2 className="display-lg mt-6 max-w-[20ch]">Was unsere Kunden sagen.</h2>
+          <div className="mt-20 grid md:grid-cols-3 gap-px bg-border">
+            {testimonials.map((t) => (
+              <blockquote key={t.name} className="bg-background p-10 lg:p-12">
+                <div className="text-accent text-2xl mb-6">★★★★★</div>
+                <p className="font-display text-xl leading-relaxed">"{t.quote}"</p>
+                <footer className="mt-8 font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
+                  — {t.name}
+                </footer>
+              </blockquote>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-20 aspect-[21/9] w-full scroll-reveal">
-            <iframe
-              title="Anfahrt Central Garage Chemnitz"
-              src="https://www.google.com/maps?q=Adelsbergstra%C3%9Fe+32,+09126+Chemnitz&output=embed"
-              className="w-full h-full grayscale contrast-110 border border-border"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
+      {/* CTA */}
+      <section className="container-x py-32 md:py-48 text-center">
+        <div className="eyebrow justify-center">06 — Termin</div>
+        <h2 className="display-xl mt-8 max-w-[18ch] mx-auto">
+          Ihr Fahrzeug<br />verdient das <em className="not-italic text-accent">Beste</em>.
+        </h2>
+        <p className="mt-10 max-w-xl mx-auto text-lg text-muted-foreground">
+          Termine vergeben wir telefonisch — am besten vormittags. Wir freuen uns,
+          von Ihnen zu hören.
+        </p>
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+          <a href="tel:+4937177146 72" className="btn-primary">0371 7714672 <span>→</span></a>
+          <Link to="/kontakt" className="btn-ghost">Anfahrt ansehen</Link>
         </div>
       </section>
 
       <Footer />
     </div>
-  );
-}
-
-/* ---------- Reasons section: cinematic stagger + parallax ---------- */
-function ReasonsSection() {
-  return (
-    <section
-      id="gruende"
-      className="ink-section relative bg-background text-foreground overflow-hidden py-32 md:py-48"
-    >
-      {/* Decorative parallax layer */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.05]">
-        <div className="absolute inset-0" data-parallax="0.08">
-          <img src={engine} alt="" className="w-full h-full object-cover" />
-        </div>
-      </div>
-
-      <div className="relative container-x">
-        <div className="grid lg:grid-cols-12 gap-12 items-end mb-20">
-          <div className="lg:col-span-5 scroll-reveal">
-            <div className="eyebrow">01 — Versprechen</div>
-          </div>
-          <div className="lg:col-span-7 scroll-reveal scroll-reveal-delay-1">
-            <h2 className="display-lg">
-              Vier Gründe,<br />
-              uns zu <em className="not-italic text-accent">vertrauen</em>.
-            </h2>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {reasons.map((r, i) => (
-            <article
-              key={r.title}
-              className={`reason-card scroll-reveal relative bg-card border border-border p-10 md:p-14 ${i % 2 === 1 ? "md:translate-y-12" : ""}`}
-            >
-              <div className="flex items-start justify-between">
-                <span className="font-mono text-xs text-accent">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <r.icon size={28} className="text-muted-foreground" />
-              </div>
-              <h3 className="font-display text-3xl md:text-4xl mt-12 leading-[1.05]">
-                {r.title}
-              </h3>
-              <p className="mt-6 text-muted-foreground leading-relaxed max-w-md">
-                {r.desc}
-              </p>
-              <div className="mt-12 hairline" />
-              <div className="mt-6 font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                {r.tag}
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -424,61 +239,14 @@ const services = [
 ];
 
 const reasons = [
-  {
-    title: "Meisterbetrieb seit Tag eins",
-    desc: "Geprüfte Qualität, dokumentierte Arbeit, faire Kalkulation. Ohne Wenn und Aber.",
-    tag: "Qualität · Transparenz",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Markenunabhängig",
-    desc: "Vom Kleinwagen bis zum Camper — sogar LKW nach Absprache. Eine Werkstatt für alles.",
-    tag: "Alle Marken · Alle Klassen",
-    icon: Wrench,
-  },
-  {
-    title: "Garantie bleibt erhalten",
-    desc: "Laut EU-Recht behalten Sie Ihre Herstellergarantie auch bei freier Werkstatt — voll und ganz.",
-    tag: "EU-konform",
-    icon: Globe2,
-  },
-  {
-    title: "Mobil bleiben — 19 € / Tag",
-    desc: "Werkstatt­ersatzwagen zum fairen Pauschalpreis. Damit Sie nicht stehen bleiben.",
-    tag: "Ersatzwagen inklusive",
-    icon: Car,
-  },
+  { title: "Meisterbetrieb seit Tag eins", desc: "Geprüfte Qualität, dokumentierte Arbeit, faire Kalkulation. Ohne Wenn und Aber." },
+  { title: "Markenunabhängig", desc: "Vom Kleinwagen bis zum Camper. Sogar LKW nach Absprache." },
+  { title: "Garantie bleibt erhalten", desc: "Laut EU-Recht behalten Sie Ihre Herstellergarantie auch bei freier Werkstatt." },
+  { title: "Mobil bleiben", desc: "Werkstatt­ersatzwagen für nur 19 € am Tag — damit Sie nicht stehen bleiben." },
 ];
 
-const reviews = [
-  {
-    quote: "Endlich eine Werkstatt, die ehrlich kommuniziert und sauber arbeitet. Mein neuer Stammbetrieb in Chemnitz.",
-    name: "Marcus Krüger",
-    initials: "MK",
-    when: "vor 2 Wochen",
-  },
-  {
-    quote: "Diagnose perfekt, Reparatur exakt zum vereinbarten Preis. Persönlich, professionell — wirklich top.",
-    name: "Sandra Lehmann",
-    initials: "SL",
-    when: "vor 1 Monat",
-  },
-  {
-    quote: "Schnelle Terminvergabe, freundliches Team, hochwertige Qualität. Klare Empfehlung.",
-    name: "Tobias Hoffmann",
-    initials: "TH",
-    when: "vor 1 Monat",
-  },
-  {
-    quote: "Faire Preise, transparente Kostenvoranschläge und das Auto war pünktlich fertig. So wünscht man sich Service.",
-    name: "Julia Bauer",
-    initials: "JB",
-    when: "vor 2 Monaten",
-  },
-  {
-    quote: "Endlich jemand, der sich Zeit nimmt zu erklären, was am Auto gemacht wird. Sehr kompetent.",
-    name: "Andreas Weber",
-    initials: "AW",
-    when: "vor 3 Monaten",
-  },
+const testimonials = [
+  { quote: "Endlich eine Werkstatt, die ehrlich kommuniziert und sauber arbeitet. Mein neuer Stammbetrieb.", name: "M. Krüger" },
+  { quote: "Diagnose perfekt, Reparatur zum vereinbarten Preis. Persönlich und absolut professionell.", name: "S. Lehmann" },
+  { quote: "Schnelle Terminvergabe, freundliches Team, top Qualität. Klare Empfehlung in Chemnitz.", name: "T. Hoffmann" },
 ];

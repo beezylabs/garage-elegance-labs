@@ -280,41 +280,6 @@
 .link-arrow .arrow { display: inline-block; transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .link-arrow:hover .arrow { transform: translateX(8px); }
 
-/* ============ Reasons stack (sticky cinematic cards) ============ */
-.reason-card {
-  opacity: 0;
-  transform: translateY(80px) scale(0.96);
-  transition:
-    opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
-    transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-  will-change: transform, opacity;
-}
-.reason-card.is-visible { opacity: 1; transform: translateY(0) scale(1); }
-.reason-card:nth-child(2) { transition-delay: 0.08s; }
-.reason-card:nth-child(3) { transition-delay: 0.16s; }
-.reason-card:nth-child(4) { transition-delay: 0.24s; }
-
-.reason-card { transform-origin: center; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease, border-color 0.6s ease; }
-.reason-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 30px 60px -30px color-mix(in oklab, var(--ink) 35%, transparent); }
-.scroll-reveal-delay-5 { transition-delay: 0.40s; }
-.scroll-reveal-delay-6 { transition-delay: 0.48s; }
-
-/* ============ Reviews row ============ */
-.reviews-track {
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-.reviews-track::-webkit-scrollbar { display: none; }
-.reviews-track > * { scroll-snap-align: start; }
-
-/* ============ Mega type ============ */
-.display-mega {
-  font-family: var(--font-display);
-  font-size: clamp(5rem, 18vw, 18rem);
-  line-height: 0.85;
-  letter-spacing: -0.05em;
-}
-
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .scroll-reveal, .scroll-reveal-img { opacity: 1; transform: none; clip-path: none; transition: none; }
