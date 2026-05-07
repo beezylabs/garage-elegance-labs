@@ -29,13 +29,15 @@ function Home() {
       {/* HERO */}
       <section className="ink-section relative min-h-screen bg-background text-foreground overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src={hero}
-            alt="Premium-Fahrzeug in der Central Garage Chemnitz"
-            className="w-full h-full object-cover ken-burns"
-            width={1920}
-            height={1080}
-          />
+          <div className="absolute inset-0" data-parallax="0.18">
+            <img
+              src={hero}
+              alt="Premium-Fahrzeug in der Central Garage Chemnitz"
+              className="w-full h-full object-cover ken-burns scale-110"
+              width={1920}
+              height={1080}
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/30 to-transparent" />
         </div>
@@ -88,13 +90,13 @@ function Home() {
       {/* INTRO */}
       <section className="container-x py-32 md:py-48">
         <div className="grid lg:grid-cols-12 gap-16 items-end">
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 scroll-reveal">
             <div className="eyebrow">01 — Werkstatt</div>
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground mt-12">
               Adelsbergstraße 32<br />09126 Chemnitz
             </p>
           </div>
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 scroll-reveal scroll-reveal-delay-1">
             <h2 className="display-lg max-w-[18ch]">
               Eine Werkstatt, die das Wort <em className="not-italic text-accent">Meister</em> wieder ernst nimmt.
             </h2>
@@ -126,13 +128,13 @@ function Home() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
           {services.map((s, i) => (
-            <article key={s.title} className="bg-background p-10 lg:p-12 group cursor-pointer">
-              <div className="aspect-[4/3] overflow-hidden mb-8">
+            <article key={s.title} className="bg-background p-10 lg:p-12 group cursor-pointer scroll-reveal">
+              <div className="aspect-[4/3] image-zoom mb-8">
                 <img
                   src={s.image}
                   alt={s.title}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="flex items-baseline gap-4">
@@ -179,11 +181,11 @@ function Home() {
           <Link to="/galerie" className="link-arrow hidden md:inline-flex">Alle ansehen <span className="arrow">→</span></Link>
         </div>
         <div className="grid grid-cols-12 gap-4 md:gap-6">
-          <img src={workshop} alt="Werkstatt" loading="lazy" className="col-span-12 md:col-span-8 aspect-[16/10] object-cover" />
-          <img src={wheel} alt="Reifenservice" loading="lazy" className="col-span-6 md:col-span-4 aspect-[4/5] object-cover" />
-          <img src={engine} alt="Motor" loading="lazy" className="col-span-6 md:col-span-4 aspect-square object-cover" />
-          <img src={diagnostic} alt="Diagnose" loading="lazy" className="col-span-6 md:col-span-4 aspect-square object-cover" />
-          <img src={hands} alt="Reparatur" loading="lazy" className="col-span-12 md:col-span-4 aspect-square object-cover" />
+          <div className="col-span-12 md:col-span-8 aspect-[16/10] image-zoom scroll-reveal scroll-reveal-img"><img src={workshop} alt="Werkstatt" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-[4/5] image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={wheel} alt="Reifenservice" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img"><img src={engine} alt="Motor" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-6 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-1"><img src={diagnostic} alt="Diagnose" loading="lazy" className="w-full h-full object-cover" /></div>
+          <div className="col-span-12 md:col-span-4 aspect-square image-zoom scroll-reveal scroll-reveal-img scroll-reveal-delay-2"><img src={hands} alt="Reparatur" loading="lazy" className="w-full h-full object-cover" /></div>
         </div>
       </section>
 
