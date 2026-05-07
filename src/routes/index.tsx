@@ -107,28 +107,6 @@ function Home() {
       {/* VIER GRÜNDE — premium scroll showcase */}
       <ReasonsSection />
 
-      {/* INTRO / Werkstatt */}
-      <section id="werkstatt" className="container-x py-32 md:py-48">
-        <div className="grid lg:grid-cols-12 gap-16 items-end">
-          <div className="lg:col-span-5 scroll-reveal">
-            <div className="eyebrow">02 — Werkstatt</div>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground mt-12">
-              Adelsbergstraße 32<br />09126 Chemnitz
-            </p>
-          </div>
-          <div className="lg:col-span-7 scroll-reveal scroll-reveal-delay-1">
-            <h2 className="display-lg max-w-[18ch]">
-              Eine Werkstatt, die das Wort <em className="not-italic text-accent">Meister</em> wieder ernst nimmt.
-            </h2>
-            <p className="mt-10 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              Seit 2025 finden Sie uns am neuen, größeren Standort. Drei Hebebühnen,
-              modernste Diagnose, freie Markenwahl — und ein Team, das Ihr Fahrzeug
-              behandelt wie das eigene.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <Marquee items={["Inspektion", "Reparatur", "Diagnose", "Reifen", "Autoglas", "Unfall"]} />
 
       {/* SERVICES */}
