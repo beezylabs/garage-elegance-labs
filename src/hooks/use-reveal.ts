@@ -7,27 +7,32 @@ import { useRouterState } from "@tanstack/react-router";
  * Mount once at the app root.
  */
 export function useScrollReveal() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const els = document.querySelectorAll<HTMLElement>(".scroll-reveal");
-    if (!("IntersectionObserver" in window)) {
-      els.forEach((el) => el.classList.add("is-visible"));
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
+    const run = () => {
+      const els = document.querySelectorAll<HTMLElement>(".scroll-reveal:not(.is-visible)");
+      if (!("IntersectionObserver" in window)) {
+        els.forEach((el) => el.classList.add("is-visible"));
+        return;
+      }
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+      );
+      els.forEach((el) => io.observe(el));
+      return () => io.disconnect();
+    };
+    const t = setTimeout(run, 50);
+    return () => clearTimeout(t);
+  }, [pathname]);
 }
 
 /**
