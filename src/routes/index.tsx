@@ -369,8 +369,7 @@ function ReasonsSection() {
           {reasons.map((r, i) => (
             <article
               key={r.title}
-              className="reason-card scroll-reveal relative bg-card border border-border p-10 md:p-14"
-              data-parallax={i % 2 === 0 ? "-0.04" : "0.04"}
+              className={`reason-card scroll-reveal relative bg-card border border-border p-10 md:p-14 ${i % 2 === 1 ? "md:translate-y-12" : ""}`}
             >
               <div className="flex items-start justify-between">
                 <span className="font-mono text-xs text-accent">
