@@ -29,13 +29,15 @@ function Home() {
       {/* HERO */}
       <section className="ink-section relative min-h-screen bg-background text-foreground overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src={hero}
-            alt="Premium-Fahrzeug in der Central Garage Chemnitz"
-            className="w-full h-full object-cover ken-burns"
-            width={1920}
-            height={1080}
-          />
+          <div className="absolute inset-0" data-parallax="0.18">
+            <img
+              src={hero}
+              alt="Premium-Fahrzeug in der Central Garage Chemnitz"
+              className="w-full h-full object-cover ken-burns scale-110"
+              width={1920}
+              height={1080}
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/30 to-transparent" />
         </div>
