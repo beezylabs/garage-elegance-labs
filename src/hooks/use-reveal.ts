@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useRouterState } from "@tanstack/react-router";
 
 /**
  * Adds an IntersectionObserver that toggles `is-visible` on
