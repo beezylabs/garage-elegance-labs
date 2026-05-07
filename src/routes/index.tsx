@@ -36,8 +36,8 @@ function Home() {
             width={1920}
             height={1080}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/40 to-background" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/55 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-background/20" />
         </div>
 
         <div className="relative container-x flex flex-col min-h-screen pt-32 pb-16">
