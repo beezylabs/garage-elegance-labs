@@ -219,16 +219,14 @@ function Home() {
 
       {/* 4 — ERSATZWAGEN HIGHLIGHT — full hero image */}
       <section id="ersatzwagen" className="ink-section relative overflow-hidden min-h-[90vh] flex items-center text-ivory">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 w-full h-full" data-parallax="0.1">
-            <img
-              src={wheel}
-              alt="Werkstattersatzwagen — Mobilität inklusive"
-              className="w-full h-full object-cover scale-110"
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-background/30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/70" />
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src={wheel}
+            alt="Werkstattersatzwagen — Mobilität inklusive"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-background/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/60" />
         </div>
         <div className="relative container-x py-32 md:py-48 w-full">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
