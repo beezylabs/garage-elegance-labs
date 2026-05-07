@@ -213,21 +213,27 @@ function Home() {
         </div>
       </section>
 
-      {/* 4 — ERSATZWAGEN HIGHLIGHT */}
-      <section id="ersatzwagen" className="ink-section bg-background text-foreground relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" data-parallax="0.08">
-            <img src={wheel} alt="" className="w-full h-full object-cover scale-110" />
+      {/* 4 — ERSATZWAGEN HIGHLIGHT — full hero image */}
+      <section id="ersatzwagen" className="ink-section relative overflow-hidden min-h-[90vh] flex items-center text-ivory">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 w-full h-full" data-parallax="0.1">
+            <img
+              src={wheel}
+              alt="Werkstattersatzwagen — Mobilität inklusive"
+              className="w-full h-full object-cover scale-110"
+            />
           </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-background/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/70" />
         </div>
-        <div className="relative container-x py-32 md:py-48">
+        <div className="relative container-x py-32 md:py-48 w-full">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-7 scroll-reveal">
               <div className="eyebrow">03 — Mobil bleiben</div>
               <h2 className="display-xl mt-8">
                 <span className="text-accent">19 €</span><br />pro Tag.<br />Mobilität inklusive.
               </h2>
-              <p className="mt-10 max-w-xl text-lg text-muted-foreground leading-relaxed">
+              <p className="mt-10 max-w-xl text-lg text-ivory/80 leading-relaxed">
                 Unser Werkstattersatzwagen kostet 19 € am Tag — damit Sie nicht stehen bleiben,
                 während wir Ihr Fahrzeug zurück in Bestform bringen. Reservierung empfohlen.
               </p>
@@ -236,17 +242,17 @@ function Home() {
                 <a href="#kontakt" className="btn-ghost">Reservieren</a>
               </div>
             </div>
-            <div className="lg:col-span-5 grid grid-cols-2 gap-px bg-border scroll-reveal scroll-reveal-delay-2">
+            <div className="lg:col-span-5 grid grid-cols-2 gap-px bg-border/40 backdrop-blur-md scroll-reveal scroll-reveal-delay-2">
               {[
                 [Car, "Verfügbar", "Auf Anfrage"],
                 [Clock, "Übergabe", "Vormittags"],
                 [MapPin, "Abholung", "Adelsbergstr. 32"],
                 [Phone, "Buchung", "Telefonisch"],
               ].map(([Icon, k, v]: any, i) => (
-                <div key={i} className="bg-background p-8">
+                <div key={i} className="bg-background/70 backdrop-blur-md p-8">
                   <Icon size={18} className="text-accent" />
-                  <div className="mt-6 font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">{k}</div>
-                  <div className="mt-2 font-display text-lg">{v}</div>
+                  <div className="mt-6 font-mono text-[10px] uppercase tracking-[0.22em] text-ivory/70">{k}</div>
+                  <div className="mt-2 font-display text-lg text-ivory">{v}</div>
                 </div>
               ))}
             </div>
