@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const nav = [
-  { to: "/", label: "Start" },
-  { to: "/leistungen", label: "Leistungen" },
-  { to: "/werkstatt", label: "Werkstatt" },
-  { to: "/galerie", label: "Galerie" },
-  { to: "/kontakt", label: "Kontakt" },
+  { href: "#gruende", label: "Vertrauen" },
+  { href: "#leistungen", label: "Leistungen" },
+  { href: "#ersatzwagen", label: "Ersatzwagen" },
+  { href: "#werkstatt", label: "Werkstatt" },
+  { href: "#stimmen", label: "Stimmen" },
+  { href: "#kontakt", label: "Kontakt" },
 ] as const;
 
 export function Header({ variant = "auto" }: { variant?: "auto" | "light" | "dark" }) {
@@ -40,16 +41,15 @@ export function Header({ variant = "auto" }: { variant?: "auto" | "light" | "dar
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-10">
+        <nav className="hidden lg:flex items-center gap-8">
           {nav.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
+            <a
+              key={n.href}
+              href={n.href}
               className="text-[12px] uppercase tracking-[0.22em] font-mono opacity-80 hover:opacity-100 transition-opacity"
-              activeProps={{ className: "opacity-100 [&]:text-accent" }}
             >
               {n.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
@@ -60,9 +60,9 @@ export function Header({ variant = "auto" }: { variant?: "auto" | "light" | "dar
           >
             0371 7714672
           </a>
-          <Link to="/kontakt" className="btn-primary !py-3 !px-5 text-[11px]">
+          <a href="#kontakt" className="btn-primary !py-3 !px-5 text-[11px]">
             Termin
-          </Link>
+          </a>
         </div>
 
         <button
@@ -78,14 +78,14 @@ export function Header({ variant = "auto" }: { variant?: "auto" | "light" | "dar
         <div className="lg:hidden border-t border-border bg-background text-foreground">
           <div className="container-x py-8 flex flex-col gap-6">
             {nav.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
+              <a
+                key={n.href}
+                href={n.href}
                 onClick={() => setOpen(false)}
                 className="text-2xl font-display"
               >
                 {n.label}
-              </Link>
+              </a>
             ))}
             <a href="tel:+4937177146 72" className="font-mono text-sm uppercase tracking-[0.22em] mt-4 opacity-70">
               0371 7714672
