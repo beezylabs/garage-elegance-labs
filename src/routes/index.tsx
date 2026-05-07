@@ -394,14 +394,21 @@ function Home() {
             ))}
           </div>
 
-          <div className="mt-16 aspect-[16/9] md:aspect-[21/9] w-full scroll-reveal scroll-reveal-img">
-            <iframe
-              title="Anfahrt Central Garage Chemnitz"
-              src="https://www.google.com/maps?q=Adelsbergstra%C3%9Fe+32,+09126+Chemnitz&output=embed"
-              className="w-full h-full grayscale contrast-110"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          <div className="mt-20 grid lg:grid-cols-2 gap-px bg-border border border-border scroll-reveal">
+            <div className="bg-background p-2">
+              <div className="aspect-[4/3] lg:aspect-auto lg:h-full w-full overflow-hidden">
+                <iframe
+                  title="Anfahrt Central Garage Chemnitz"
+                  src="https://www.google.com/maps?q=Adelsbergstra%C3%9Fe+32,+09126+Chemnitz&output=embed"
+                  className="w-full h-full min-h-[420px] grayscale contrast-110"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </div>
+            <div className="bg-background p-2">
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>
