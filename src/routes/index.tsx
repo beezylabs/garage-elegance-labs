@@ -150,7 +150,7 @@ function Home() {
       {/* 2 — VIER GRÜNDE */}
       <section id="gruende" className="ink-section bg-background text-foreground relative overflow-hidden">
         <div className="grid lg:grid-cols-2">
-          <div className="relative min-h-[60vh] lg:min-h-[100vh] overflow-hidden">
+          <div className="relative aspect-[4/5] lg:aspect-auto lg:min-h-[100vh] overflow-hidden">
             <div className="absolute inset-0" data-parallax="0.12">
               <img src={hands} alt="Meisterhafte Handarbeit" loading="lazy" className="absolute inset-0 w-full h-full object-cover scale-110" />
             </div>
